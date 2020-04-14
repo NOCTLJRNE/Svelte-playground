@@ -27,7 +27,7 @@
   import DeferredTransitions from "./Transitions/DeferredTransitions.svelte";
   import ClassDirective from "./Classes/ClassDirective.svelte";
   import SlotBox from "./ComponentComposition/SlotBox.svelte";
-  import NamedSLotContactCard from "./ComponentComposition/NamedSLotContactCard.svelte";
+  // import NamedSLotContactCard from "./ComponentComposition/NamedSLotContactCard.svelte";
   import SlotProps from "./ComponentComposition/SlotProps.svelte";
   import Self from "./SpecialElements/Self.svelte";
   import DynamicComponent from "./SpecialElements/DynamicComponent.svelte";
@@ -197,10 +197,10 @@
     <p>This is a box. It can contain anything</p>
   </SlotBox>
   <SlotBox />
-  <NamedSLotContactCard>
+  <!-- <NamedSLotContactCard>
     <span slot="name">Zhao Yun</span>
     <span slot="address">Shu country</span>
-  </NamedSLotContactCard>
+  </NamedSLotContactCard> -->
   <SlotProps let:hovering>
     <div id="hoverme" class:active={hovering}>
       {#if hovering}
