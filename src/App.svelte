@@ -32,10 +32,15 @@
   import Self from "./SpecialElements/Self.svelte";
   import DynamicComponent from "./SpecialElements/DynamicComponent.svelte";
   import Window from "./SpecialElements/Window.svelte";
-  import Congrats from "./Congrats.svelte";
+  import CongratsWindows from "./CongratsWindows.svelte";
+  // import Congrats from "./Congrats.svelte";
+  import Router from "svelte-spa-router";
   import { onDestroy } from "svelte";
+  import { link } from "svelte-spa-router";
   export let name;
-
+  const routes = {
+    "/congrats": CongratsWindows
+  };
   let word = "world";
   let innerEventMessage = "Inner event starting ...";
   let outerEventMessage = "Outer event starting ...";
@@ -125,6 +130,11 @@
     <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
     to learn how to build Svelte apps.
   </p>
+  <p>
+    <a href="/congrats" use:link>Let the party begin !</a>
+  </p>
+  <Router {routes} />
+
   <CounterIntro />
   <!-- Props  -->
   <Nested answer={261} />
@@ -206,8 +216,8 @@
 
 </main>
 <!-- Special Elements -->
-<Self />
+<!-- <Self />
 <DynamicComponent />
-<Window />
+<Window /> -->
 <!-- Special Elements -->
 <!-- <Congrats /> -->

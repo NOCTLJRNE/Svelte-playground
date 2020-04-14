@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  let characters = ["🥳", "🎉", "✨"];
+  let characters = ["🥳", "🎉", "✨", "🎂", "🎁", "💰"];
 
   let confetti = new Array(100)
     .fill()
@@ -10,7 +10,7 @@
         character: characters[i % characters.length],
         x: Math.random() * 100,
         y: -20 - Math.random() * 100,
-        r: 0.1 + Math.random() * 1
+        r: 0.2 + Math.random(0.9) * 1
       };
     })
     .sort((a, b) => a.r - b.r);
@@ -22,7 +22,7 @@
       frame = requestAnimationFrame(loop);
 
       confetti = confetti.map(emoji => {
-        emoji.y += 0.7 * emoji.r;
+        emoji.y += 0.6 * emoji.r;
         if (emoji.y > 120) emoji.y = -20;
         return emoji;
       });
@@ -35,6 +35,10 @@
 </script>
 
 <style>
+  /* :global(body) {
+    overflow: hidden;
+  } */
+
   span {
     position: absolute;
     font-size: 5vw;
