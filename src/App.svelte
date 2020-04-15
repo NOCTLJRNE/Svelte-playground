@@ -198,10 +198,10 @@
     <p>This is a box. It can contain anything</p>
   </SlotBox>
   <SlotBox />
-  <!-- <NamedSLotContactCard>
+  <NamedSLotContactCard>
     <span slot="name">Zhao Yun</span>
-    <span slot="address">Shu country</span>
-  </NamedSLotContactCard> -->
+    <!-- <span slot="address">Shu country</span> -->
+  </NamedSLotContactCard>
   <SlotProps let:hovering>
     <div id="hoverme" class:active={hovering}>
       {#if hovering}
