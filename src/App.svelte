@@ -134,6 +134,10 @@
   <p>
     <a href="/congrats" use:link>Let the party begin !</a>
   </p>
+  <NamedSLotContactCard>
+    <span slot="name">Zhao Yun</span>
+    <span slot="address">Shu country</span>
+  </NamedSLotContactCard>
   <Router {routes} />
 
   <CounterIntro />
