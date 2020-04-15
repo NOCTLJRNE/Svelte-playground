@@ -129,7 +129,7 @@
   <p>
     Visit the
     <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps !!! (MASTER)
+    to learn how to build Svelte apps ! (MASTER)
   </p>
   <p>
     <a href="/congrats" use:link>Let the party begin !</a>
