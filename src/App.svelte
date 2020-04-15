@@ -200,7 +200,7 @@
   <SlotBox />
   <NamedSLotContactCard>
     <span slot="name">Zhao Yun</span>
-    <!-- <span slot="address">Shu country</span> -->
+    <span slot="address">Shu country</span>
   </NamedSLotContactCard>
   <SlotProps let:hovering>
     <div id="hoverme" class:active={hovering}>
