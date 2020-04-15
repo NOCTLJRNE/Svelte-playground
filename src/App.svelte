@@ -27,6 +27,7 @@
   import DeferredTransitions from "./Transitions/DeferredTransitions.svelte";
   import ClassDirective from "./Classes/ClassDirective.svelte";
   import SlotBox from "./ComponentComposition/SlotBox.svelte";
+  import NamedSLotContactCard from "./ComponentComposition/NamedSlotContactCard.svelte";
   // import NamedSLotContactCard from "./ComponentComposition/NamedSLotContactCard.svelte";
   import SlotProps from "./ComponentComposition/SlotProps.svelte";
   import Self from "./SpecialElements/Self.svelte";
