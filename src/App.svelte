@@ -136,7 +136,8 @@
   </p>
 
   <Router {routes} />
-
+  <!-- Transitons -->
+  <FadeAndFly />
   <CounterIntro />
   <!-- Props  -->
   <Nested answer={261} />
@@ -184,8 +185,7 @@
   <Tweened />
   <Spring />
   <!-- Motion -->
-  <!-- Transitons -->
-  <FadeAndFly />
+
   <!-- <CustomSpinCSS /> -->
   <TypeWriter />
   <DeferredTransitions />
