@@ -1,17 +1,20 @@
 <script>
   import Congrats from "./Congrats.svelte";
-  import { push, pop, replace } from "svelte-spa-router";
+  import { push, pop, replace, link } from "svelte-spa-router";
   function getBack() {
     push("/");
   }
 </script>
 
 <style>
-  body {
+  :global(body) {
     overflow: hidden;
   }
 </style>
 
-<button on:click={getBack}>Ok I'm done !</button>
+<h2 id="h2-01">
+  <a href="/" use:link>Ok, Stop 😕 ... 🌧️🌧️🌧️</a>
+</h2>
+<!-- <button on:click={getBack}>Ok I'm done !</button> -->
 <br />
 <Congrats />

@@ -1,8 +1,23 @@
 <script>
   import { onMount } from "svelte";
-  let selectorVisible = true;
+  let controlsVisible = true;
+  let emojisCount = 50;
+  let emojisRevRate = 0;
   let emojis = ["❄️"];
-  let characters = ["🥳", "🎉", "✨", "🎂", "🎁", "💰", "💩", "❄️"];
+  let characters = [
+    "🥳",
+    "🙃",
+    "🎉",
+    "🌞",
+    "✨",
+    "🎂",
+    "🎁",
+    "🍀",
+    "❤️",
+    "💰",
+    "💩",
+    "❄️"
+  ];
   // let characters = ["❄️"];
   let sway = false;
   let sound01;
@@ -16,7 +31,7 @@
       return temp;
     }
   }
-  $: confetti = new Array(50)
+  $: confetti = new Array(emojisCount)
     .fill()
     .map((_, i) => {
       return {
@@ -24,7 +39,8 @@
         character: emojis[i % emojis.length],
         x: Math.random() * 100,
         y: -20 - Math.random() * 100,
-        r: 0.1 + Math.random(0.7) * 1
+        r: 0.1 + Math.random(0.7) * 1,
+        t: 0
       };
     })
     .sort((a, b) => a.r - b.r);
@@ -46,7 +62,7 @@
       frame = requestAnimationFrame(loop);
 
       confetti = confetti.map((emoji, i) => {
-        emoji.y += 0.6 * emoji.r;
+        emoji.y += 0.4 * emoji.r;
         if (emoji.y > 120) emoji.y = -20;
         let c = i % 2 ? 1 : -1;
         if (sway) {
@@ -54,6 +70,8 @@
 
           emoji.x += dx * emoji.r * 0.25;
         }
+        // emoji rev rate
+        emoji.t = (emojisRevRate * 0.5 * emoji.y) / 100;
         if (emoji.x > 120) emoji.x = -20;
         return emoji;
       });
@@ -75,20 +93,21 @@
         ? ["🥳", "🎉", "✨", "🎂", "🎁", "💰", "💩", "❄️"]
         : [""];
     console.log(emojis);
-    confetti = new Array(50)
+    confetti = new Array(emojisCount)
       .fill()
       .map((_, i) => {
         return {
           character: emojis[i % emojis.length],
           x: Math.random() * 100,
           y: -20 - Math.random() * 100,
-          r: 0.1 + Math.random(0.7) * 1
+          r: 0.1 + Math.random(0.7) * 1,
+          t: 0
         };
       })
       .sort((a, b) => a.r - b.r);
   }
   function toggleSelector() {
-    selectorVisible = !selectorVisible;
+    controlsVisible = !controlsVisible;
   }
   function emojiClickHandler(i) {
     console.log(`emoji ${i} clicked`);
@@ -102,7 +121,7 @@
     overflow: hidden;
   } */
   .emojiInput {
-    margin: 1vh 0vw 1vh 2vw;
+    margin: 1vh 0vw 1vh 1.5vw;
   }
   .emojiDroplet {
     position: absolute;
@@ -112,10 +131,20 @@
 </style>
 
 <button on:click={toggleSelector}>
-  {selectorVisible ? 'Hide' : 'Show'} Emojis Selector
+  {controlsVisible ? 'Hide' : 'Show'} Controls
 </button>
 <br />
-{#if selectorVisible}
+{#if controlsVisible}
+  <label>
+    <input type="number" bind:value={emojisCount} min="10" max="100" />
+    <span>Emojis Count</span>
+    <input type="range" bind:value={emojisCount} min="10" max="100" />
+  </label>
+  <label>
+    <input type="number" bind:value={emojisRevRate} min="0" max="10" />
+    <span>Make'em Spin !</span>
+    <input type="range" bind:value={emojisRevRate} min="0" max="10" />
+  </label>
   {#each characters as emoji}
     <input
       class="emojiInput"
@@ -124,15 +153,15 @@
       value={emoji} />
     {emoji}
   {/each}
+  <br />
+  <button on:click={toggleIcons}>Toggle Icons</button>
+  <button on:click={() => (sway = !sway)}>Toggle The Wind !</button>
 {/if}
-<br />
-<button on:click={toggleIcons}>Toggle Icons</button>
-<button on:click={() => (sway = !sway)}>Toggle The Wind !</button>
 {#each confetti as c, i}
   <span
     on:click={() => emojiClickHandler(i)}
     class="emojiDroplet"
-    style="left: {c.x}%; top: {c.y}%; transform: scale({c.r})">
+    style="left: {c.x}%; top: {c.y}%; transform: scale({c.r}) rotate({c.t}turn)">
     {c.character}
   </span>
 {/each}
