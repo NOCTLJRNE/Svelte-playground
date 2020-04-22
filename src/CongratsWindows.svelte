@@ -12,7 +12,6 @@
   }
 </style>
 
-<h2>Congratulations</h2>
 <button on:click={getBack}>Ok I'm done !</button>
 <br />
 <Congrats />
