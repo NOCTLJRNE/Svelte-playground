@@ -12,4 +12,6 @@
 
 <h2 id="h2-01">
   <a href="/congrats" use:link>Let it 🌧️🌧️🌧️ !</a>
+  <br />
+  <a href="/fonts" use:link>Check some 🔤 !</a>
 </h2>

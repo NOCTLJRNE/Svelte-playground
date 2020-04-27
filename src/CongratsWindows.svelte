@@ -12,9 +12,9 @@
   }
 </style>
 
-<h2 id="h2-01">
+<h1 id="h2-01">
   <a href="/" use:link>Ok, Stop 😕 ... 🌧️🌧️🌧️</a>
-</h2>
+</h1>
 <!-- <button on:click={getBack}>Ok I'm done !</button> -->
 <br />
 <Congrats />
