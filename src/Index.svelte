@@ -14,4 +14,10 @@
   <a href="/congrats" use:link>Let it 🌧️🌧️🌧️ !</a>
   <br />
   <a href="/fonts" use:link>Check some 🔤 !</a>
+  <br />
+  <a href="/glowing" use:link>Glow 🔤 !</a>
+  <br />
+  <a href="/gradient" use:link>Radiance !</a>
+  <br />
+  <a href="/airdrop" use:link>Drop the 🎁 !</a>
 </h2>

@@ -1,5 +1,13 @@
 <script>
   import TTTVcaps from "../svg/TTTVcaps.svelte";
+  import HappyBirthday from "../svg/HappyBirthday.svelte";
+  import HaBi from "../svg/HaBi.svelte";
+  import Kitty from "../svg/Kitty.svelte";
+  import Omaj from "../svg/Omaj.svelte";
+  import Lmaj from "../svg/Lmaj.svelte";
+  import O2maj from "../svg/O2maj.svelte";
+  import O2maj2 from "../svg/O2maj2.svelte";
+  import O1maj from "../svg/O1maj.svelte";
   import Space from "../svg/Space.svelte";
   import Dash from "../svg/Dash.svelte";
   import V from "../svg/V.svelte";
@@ -47,6 +55,9 @@
   let blue = "#0000FF";
   let strokeWidth = 1;
   let visible1 = false;
+  let visible2 = false;
+  let visible3 = false;
+  let visible4 = false;
   let fontsFamily = ["'Sriracha', cursive"];
   let fontsList = fontsFamily.map((font, i) => ({ number: i + 1, font }));
   onMount(() => {
@@ -89,6 +100,18 @@
 <button on:click={() => (visible1 = !visible1)}>
   {visible1 ? 'Erase' : 'Draw'}
 </button>
+<button on:click={() => (visible2 = !visible2)}>
+  {visible2 ? 'Erase BD' : 'Draw BD'}
+</button>
+<button on:click={() => (visible3 = !visible3)}>
+  {visible3 ? 'Erase O' : 'Draw O'}
+</button>
+<button on:click={() => (visible4 = !visible4)}>
+  {visible4 ? 'Erase Kitty' : 'Draw Kitty'}
+</button>
+<!-- <button on:click={() => (visible4 = !visible4)}>
+  {visible4 ? 'Erase HaBi' : 'Draw HaBi'}
+</button> -->
 <br />
 <br />
 {#if visible1}
@@ -111,4 +134,22 @@
   <Dash />
   <V bind:strokeColor={blue} bind:strokeWidth />
   <Ymin />
+  <br />
+  {#if visible3}
+    <O2maj />
+    <br />
+    <O1maj />
+  {/if}
+  <br />
+  {#if visible2}
+    <!-- <HappyBirthday /> -->
+    <!-- <Omaj /> -->
+    <!-- <O2maj2 /> -->
+    <Lmaj />
+  {/if}
+  <!-- <HaBi /> -->
+  {#if visible4}
+    <Kitty />
+  {/if}
+
 </div>

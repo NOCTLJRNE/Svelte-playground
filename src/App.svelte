@@ -3,6 +3,8 @@
   import Index from "./Index.svelte";
   import Fonts from "./Fonts.svelte";
   import Glowing from "./Glowing.svelte";
+  import Gradient from "./Gradient.svelte";
+  import Airdrop from "./Airdrop.svelte";
   // import Congrats from "./Congrats.svelte";
   import Router from "svelte-spa-router";
   import { onDestroy } from "svelte";
@@ -12,7 +14,9 @@
     "/": Index,
     "/congrats": CongratsWindows,
     "/fonts": Fonts,
-    "/glowing": Glowing
+    "/glowing": Glowing,
+    "/gradient": Gradient,
+    "/airdrop": Airdrop
   };
 
   //Keypad
@@ -23,6 +27,7 @@
     text-align: center;
     padding: 1em;
     padding: 0;
+    height: 100%;
     /* max-width: 240px; */
     margin: 0 auto;
     margin: 0 0 0 0;
