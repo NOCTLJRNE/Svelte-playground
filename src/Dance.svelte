@@ -2,26 +2,38 @@
   import { link } from "svelte-spa-router";
   import { onMount } from "svelte";
   let posX = 120;
-  const stickersCount = 9;
-  const stickersName = ["running", "spinning", "crawling"];
-  let stickerArray = new Array(9).fill().map((_, i) => {
+  const stickersCount = 12;
+  const stickersDirection = [-1, 1];
+  const stickersName = ["twisting", "spinning", "crawling", "dancing"];
+  let bgm1;
+  let stickerArray = new Array(stickersCount).fill().map((_, i) => {
+    let d = i % 2 ? 1 : -1;
+    let clipping = stickersName[i % stickersName.length] == "twisting" ? 29 : 0;
+    // let clipping = 29;
     return {
-      x: 80 + Math.random() * 20,
+      x: i % 2 ? 80 + Math.random() * 20 : -20 + Math.random() * 20,
       y: Math.random() * 60,
       r: 0.5 * (0.1 + Math.random(0.7) * 1),
-      name: stickersName[i % 3]
+      name: stickersName[i % stickersName.length],
+      d: d,
+      c: clipping
     };
   });
   onMount(() => {
     let frame;
+    bgm1.volume = 0.7;
     function loop() {
       frame = requestAnimationFrame(loop);
       posX -= 0.4;
       if (posX < -20) posX = 120;
       stickerArray = stickerArray.map((sticker, i) => {
-        sticker.x -= 0.4 * sticker.r;
-        if (sticker.x < -20) {
+        sticker.x = sticker.x - sticker.d * 0.4 * sticker.r;
+        if (sticker.x < -20 && sticker.d == 1) {
           sticker.x = 80 + Math.random() * 20;
+          sticker.y = Math.random() * 60;
+          sticker.r = 0.5 * (0.1 + Math.random(0.7) * 1);
+        } else if (sticker.x > 120 && sticker.d == -1) {
+          sticker.x = -20 + Math.random() * 20;
           sticker.y = Math.random() * 60;
           sticker.r = 0.5 * (0.1 + Math.random(0.7) * 1);
         }
@@ -31,6 +43,10 @@
     loop();
     return () => cancelAnimationFrame(frame);
   });
+  function changeDirection(i) {
+    // console.log(i);
+    stickerArray[i].d = -stickerArray[i].d;
+  }
 </script>
 
 <style>
@@ -119,10 +135,23 @@
       alt="" /> -->
     {#each stickerArray as sticker, i}
       <img
-        style="left: {sticker.x}vw; top: {sticker.y}vh; transform: scale({sticker.r})"
+        on:click={() => {
+          changeDirection(i);
+        }}
+        style="left: {sticker.x}vw; top: {sticker.y}vh; transform: scaleX({sticker.d * sticker.r})
+        scaleY({sticker.r}); clip-path: inset({sticker.c}% 0 0 0)"
         class="motion"
         src="./media/usagyuuun/{sticker.name}.gif"
         alt="" />
     {/each}
   </div>
+  <audio
+    bind:this={bgm1}
+    autoplay
+    loop
+    src="./media/bgm/Worth_It_Intro_2.mp3" />
+  <!-- <img
+    style="clip-path: inset(29% 0 0 0);"
+    src="./media/usagyuuun/twisting.gif"
+    alt="" /> -->
 </div>
