@@ -1,22 +1,9 @@
 <script>
-  import TTTVcaps from "../svg/TTTVcaps.svelte";
+  // import TTTVcaps from "../svg/TTTVcaps.svelte";
   import HappyBirthday from "../svg/HappyBirthday.svelte";
   import HaBi from "../svg/HaBi.svelte";
   import Kitty from "../svg/Kitty.svelte";
-  import Omaj from "../svg/Omaj.svelte";
-  import Lmaj from "../svg/Lmaj.svelte";
-  import O2maj from "../svg/O2maj.svelte";
-  import O2maj2 from "../svg/O2maj2.svelte";
-  import O1maj from "../svg/O1maj.svelte";
-  import Space from "../svg/Space.svelte";
-  import Dash from "../svg/Dash.svelte";
-  import V from "../svg/V.svelte";
-  import Ymin from "../svg/Ymin.svelte";
-  import Tmaj from "../svg/Tmaj.svelte";
-  import UWmin from "../svg/UWmin.svelte";
-  import OWFmin from "../svg/OWFmin.svelte";
-  import Nmin from "../svg/Nmin.svelte";
-  import Gmin from "../svg/Gmin.svelte";
+
   import { onMount } from "svelte";
   import { blur, draw, fade, fly } from "svelte/transition";
   import { link } from "svelte-spa-router";
@@ -114,38 +101,24 @@
 </button> -->
 <br />
 <br />
-{#if visible1}
-  <!-- <TTTVcaps /> -->
-  <Tmaj />
-  <UWmin />
-  <OWFmin />
-  <Nmin />
-  <Gmin />
-  <Dash />
-  <V />
-  <Ymin />
-{/if}
+<!-- {#if visible1}
+
+
+{/if} -->
 <div id="div2">
-  <Tmaj />
-  <UWmin />
-  <OWFmin />
-  <Nmin />
-  <Gmin />
-  <Dash />
-  <V bind:strokeColor={blue} bind:strokeWidth />
-  <Ymin />
+
   <br />
   {#if visible3}
-    <O2maj />
+    <!-- <O2maj /> -->
     <br />
-    <O1maj />
+    <!-- <O1maj /> -->
   {/if}
   <br />
   {#if visible2}
     <!-- <HappyBirthday /> -->
     <!-- <Omaj /> -->
     <!-- <O2maj2 /> -->
-    <Lmaj />
+    <!-- <Lmaj /> -->
   {/if}
   <!-- <HaBi /> -->
   {#if visible4}
