@@ -35,10 +35,12 @@
 
 <style>
   .dance1 {
-    transform: scale(0.5);
+    /* transform: scale(0.5); */
+    height: 20vh;
   }
   .motion {
     position: absolute;
+    height: 50vh;
   }
   /* .spacer {
     display: inline-block;
@@ -58,7 +60,8 @@
     text-align: left;
   }
   #danceImg2 {
-    transform: scale(0.5) scaleX(-1);
+    /* transform: scale(0.5) scaleX(-1); */
+    transform: scaleX(-1);
   }
   #takingImg1 {
     /* margin-left: 15vw; */
