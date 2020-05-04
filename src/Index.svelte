@@ -20,4 +20,6 @@
   <a href="/gradient" use:link>Radiance !</a>
   <br />
   <a href="/airdrop" use:link>Drop the 🎁 !</a>
+  <br />
+  <a href="/dance" use:link>Let's party 🎉!</a>
 </h2>

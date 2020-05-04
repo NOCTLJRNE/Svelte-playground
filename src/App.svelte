@@ -5,6 +5,7 @@
   import Glowing from "./Glowing.svelte";
   import Gradient from "./Gradient.svelte";
   import Airdrop from "./Airdrop.svelte";
+  import Dance from "./Dance.svelte";
   // import Congrats from "./Congrats.svelte";
   import Router from "svelte-spa-router";
   import { onDestroy } from "svelte";
@@ -16,7 +17,8 @@
     "/fonts": Fonts,
     "/glowing": Glowing,
     "/gradient": Gradient,
-    "/airdrop": Airdrop
+    "/airdrop": Airdrop,
+    "/dance": Dance
   };
 
   //Keypad

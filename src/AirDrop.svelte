@@ -38,6 +38,7 @@
       }
     }
     loop();
+    console.log("It got here !!!");
     return () => cancelAnimationFrame(frame);
   });
 </script>
