@@ -6,6 +6,7 @@
   import Gradient from "./Gradient.svelte";
   import AirDrop from "./AirDrop.svelte";
   import Dance from "./Dance.svelte";
+  import BirthDay from "./BirthDay.svelte";
   // import Congrats from "./Congrats.svelte";
   import Router from "svelte-spa-router";
   import { onDestroy } from "svelte";
@@ -18,7 +19,8 @@
     "/glowing": Glowing,
     "/gradient": Gradient,
     "/airdrop": AirDrop,
-    "/dance": Dance
+    "/dance": Dance,
+    "/birthday": BirthDay
   };
 
   //Keypad

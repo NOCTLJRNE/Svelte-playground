@@ -22,4 +22,6 @@
   <a href="/airdrop" use:link>Drop the 🎁 !</a>
   <br />
   <a href="/dance" use:link>Let's party 🎉!</a>
+  <br />
+  <a href="/birthday" use:link>🎂🎁🍰🎉</a>
 </h2>
