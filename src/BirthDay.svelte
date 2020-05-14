@@ -17,11 +17,12 @@
   let ending1 = true;
   let bgm1;
   onMount(() => {
-    bgm1.volume = 0.7;
+    // bgm1.volume = 0.7;
+    bgm1.volume = 0.2;
   });
   function bgm1Ended() {
     // console.log("Song ended !");
-    // scene2Start = false;
+    scene3Start = false;
   }
   function startScene2() {
     scene2Visible = true;

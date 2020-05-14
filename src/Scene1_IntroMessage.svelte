@@ -7,9 +7,9 @@
   //   const message1 = "Tặng chef nhân dịp sinh nhật";
   const message1 = "Tặng chef !";
   //   const message2 = "lần thứ 3";
-  const message2 = "nhân dịp sinh nhật lần thứ 3";
+  const message2 = "nhân sinh nhật lần thứ 3";
   //   const message3 = "lần thứ 3 ...";
-  const message3 = "nhân dịp sinh nhật lần thứ 3 ...";
+  const message3 = "nhân sinh nhật lần thứ 3 ...!";
   const message4 = "Enjoy !";
   const message5 = "... Or not ...";
   let visible1 = false;

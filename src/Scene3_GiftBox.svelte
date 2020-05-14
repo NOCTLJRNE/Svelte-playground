@@ -57,6 +57,12 @@
     /* align-items: center; */
     justify-content: center;
   }
+  #stickerContainer {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    top: 45vh;
+  }
   #balloon1 {
     cursor: pointer;
     position: absolute;
@@ -65,6 +71,19 @@
     left: 0;
     right: 0;
     top: -45vh;
+  }
+  #scticker01 {
+    transform: scale(0.7);
+    /* top: 80%;
+    left: 10%; */
+  }
+  #scticker02 {
+    transform: scaleX(-0.7) scaleY(0.7);
+    /* top: 80%;
+    left: 80%; */
+  }
+  #spacer {
+    width: 500px;
   }
 </style>
 
@@ -75,6 +94,28 @@
       style="top: {gift.yPos}vh; transform: rotate({gift.angle}turn);
       transform-origin: top"
       src="./media/boxes/heart-box.png"
-      alt="" />
+      alt=""
+      out:blur={{ delay: 0, duration: 2000 }} />
   {/if}
+  <div id="stickerContainer">
+    {#if scene3Start}
+      <img
+        class="stickerClass"
+        id="scticker01"
+        src="./media/usagyuuun/happy.gif"
+        alt=""
+        in:fly={{ delay: 500, duration: 1000, x: -100, easing: cubicOut }}
+        out:blur={{ delay: 0, duration: 2000 }} />
+    {/if}
+    <span id="spacer" />
+    {#if scene3Start}
+      <img
+        class="stickerClass"
+        id="scticker02"
+        src="./media/usagyuuun/happy.gif"
+        alt=""
+        in:fly={{ delay: 500, duration: 1000, x: -100, easing: cubicOut }}
+        out:blur={{ delay: 0, duration: 2000 }} />
+    {/if}
+  </div>
 </div>
