@@ -120,7 +120,7 @@
     <!-- <O2maj2 /> -->
     <!-- <Lmaj /> -->
   {/if}
-  <!-- <HaBi /> -->
+  <HaBi />
   {#if visible4}
     <Kitty />
   {/if}

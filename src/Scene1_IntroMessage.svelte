@@ -1,9 +1,8 @@
 <script>
-  import { link } from "svelte-spa-router";
   import { onMount } from "svelte";
   import { blur, draw, fade, fly } from "svelte/transition";
   import { createEventDispatcher } from "svelte";
-  const speedFactor = 4;
+  const speedFactor = 1;
   const dispatch = createEventDispatcher();
   //   const message1 = "Tặng chef nhân dịp sinh nhật";
   const message1 = "Tặng chef !";

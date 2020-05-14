@@ -3,6 +3,16 @@
   import { cubicIn, cubicOut, circIn, circOut } from "svelte/easing";
   import { createEventDispatcher } from "svelte";
   export let scene2Start = false;
+  const dispatch = createEventDispatcher();
+  function scene2Ended() {
+    dispatch("scene2Ended", { message: "scene2 has ended !" });
+  }
+  function startCountDown(delay) {
+    setTimeout(() => {
+      scene2Start = false;
+      // console.log("Timed Out");
+    }, delay);
+  }
 </script>
 
 <style>
@@ -66,9 +76,14 @@
 <div id="flex-container">
 
   {#if scene2Start}
-    <div class="blinking-glow" in:blur={{ delay: 1000, duration: 2000 }} />
+    <div
+      class="blinking-glow"
+      in:blur={{ delay: 1000, duration: 2000 }}
+      out:blur={{ delay: 0, duration: 2000 }} />
     <img
       in:blur={{ delay: 1000, duration: 2000 }}
+      out:blur={{ delay: 0, duration: 2000 }}
+      on:outroend={scene2Ended}
       id="img01"
       src="./media/cakes/03.png"
       alt="" />
@@ -80,7 +95,8 @@
         id="scticker01"
         src="./media/usagyuuun/humming.gif"
         alt=""
-        in:fly={{ delay: 500, duration: 1000, x: -100, easing: cubicOut }} />
+        in:fly={{ delay: 500, duration: 1000, x: -100, easing: cubicOut }}
+        out:blur={{ delay: 0, duration: 2000 }} />
     {/if}
     <span id="spacer" />
     {#if scene2Start}
@@ -89,7 +105,9 @@
         id="scticker02"
         src="./media/usagyuuun/humming.gif"
         alt=""
-        in:fly={{ delay: 2000, duration: 1000, x: 100, easing: cubicOut }} />
+        in:fly={{ delay: 2000, duration: 1000, x: 100, easing: cubicOut }}
+        out:blur={{ delay: 0, duration: 2000 }}
+        on:introend={() => startCountDown(4000)} />
     {/if}
   </div>
 </div>

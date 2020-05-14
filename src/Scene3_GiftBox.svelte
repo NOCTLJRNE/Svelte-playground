@@ -1,6 +1,9 @@
 <script>
-  import { link } from "svelte-spa-router";
   import { onMount } from "svelte";
+  import { blur, draw, fade, fly } from "svelte/transition";
+  import { cubicIn, cubicOut, circIn, circOut } from "svelte/easing";
+  import { createEventDispatcher } from "svelte";
+  export let scene3Start = false;
   let gift = {
     yPos: -55
   };
@@ -25,11 +28,11 @@
         gift.yPos += yConst * ySpeed;
       } else {
         rightIndexX += 0.1 * Math.cos(2 * Math.PI * rad);
-        if (startIndexAnimOnce) {
-          setTimeout(() => (showIndex = true), 2000);
-          setTimeout(() => (showIndex = false), 6000);
-          startIndexAnimOnce = false;
-        }
+        // if (startIndexAnimOnce) {
+        //   setTimeout(() => (showIndex = true), 2000);
+        //   setTimeout(() => (showIndex = false), 6000);
+        //   startIndexAnimOnce = false;
+        // }
       }
       if (gift.yPos > 130) {
         gift.yPos = -55;
@@ -44,15 +47,15 @@
       }
     }
     loop();
-    console.log("It got here !!!");
     return () => cancelAnimationFrame(frame);
   });
 </script>
 
 <style>
-  #airDropContainer {
-    height: 100%;
-    background: rgb(20, 20, 20);
+  #flex-container {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
   }
   #balloon1 {
     cursor: pointer;
@@ -63,24 +66,15 @@
     right: 0;
     top: -45vh;
   }
-  #rightIndex {
-    position: absolute;
-    transform: scale(2);
-    top: 50vh;
-  }
 </style>
 
-<div id="airDropContainer">
-  <h1>
-    <a href="/" use:link>Back to 🏠🏠🏠</a>
-  </h1>
-  <img
-    id="balloon1"
-    style="top: {gift.yPos}vh; transform: rotate({gift.angle}turn);
-    transform-origin: top"
-    src="./media/boxes/heart-box.png"
-    alt="" />
-  {#if showIndex}
-    <span id="rightIndex" style="left: {rightIndexX}vw">👉</span>
+<div id="flex-container">
+  {#if scene3Start}
+    <img
+      id="balloon1"
+      style="top: {gift.yPos}vh; transform: rotate({gift.angle}turn);
+      transform-origin: top"
+      src="./media/boxes/heart-box.png"
+      alt="" />
   {/if}
 </div>
