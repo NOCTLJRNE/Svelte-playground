@@ -4,8 +4,11 @@
   import { cubicIn, cubicOut, circIn, circOut } from "svelte/easing";
   import { createEventDispatcher } from "svelte";
   export let scene3Start = false;
+  export let scene3Ended = false;
+  const dispatch = createEventDispatcher();
   let gift = {
-    yPos: -55
+    yPos: -55,
+    op: 1
   };
   let rightIndexX = 30;
   let yConst = 1;
@@ -14,9 +17,12 @@
   let showIndex = false;
   let startIndexAnimOnce = true;
   let counter = 0;
+  function scene3EndedEvent() {
+    dispatch("scene3EndedEvent", { message: "scene3 has ended !" });
+  }
   onMount(() => {
     let frame;
-    let ySpeed = 1;
+    let ySpeed = 1.5;
     let xAmplitude = 0.035;
     function loop() {
       frame = requestAnimationFrame(loop);
@@ -44,6 +50,9 @@
       }
       if (destReached && xAmplitude > 0.005) {
         xAmplitude -= 0.0001;
+      }
+      if (scene3Ended && gift.op > 0) {
+        gift.op -= 0.01;
       }
     }
     loop();
@@ -91,14 +100,14 @@
   {#if scene3Start}
     <img
       id="balloon1"
-      style="top: {gift.yPos}vh; transform: rotate({gift.angle}turn);
+      style="top: {gift.yPos}vh; transform: rotate({gift.angle}turn); opacity: {gift.op};
       transform-origin: top"
       src="./media/boxes/heart-box.png"
       alt=""
       out:blur={{ delay: 0, duration: 2000 }} />
   {/if}
   <div id="stickerContainer">
-    {#if scene3Start}
+    {#if scene3Start && !scene3Ended}
       <img
         class="stickerClass"
         id="scticker01"
@@ -108,14 +117,15 @@
         out:blur={{ delay: 0, duration: 2000 }} />
     {/if}
     <span id="spacer" />
-    {#if scene3Start}
+    {#if scene3Start && !scene3Ended}
       <img
         class="stickerClass"
         id="scticker02"
         src="./media/usagyuuun/happy.gif"
         alt=""
         in:fly={{ delay: 500, duration: 1000, x: -100, easing: cubicOut }}
-        out:blur={{ delay: 0, duration: 2000 }} />
+        out:blur={{ delay: 0, duration: 2000 }}
+        on:outroend={scene3EndedEvent} />
     {/if}
   </div>
 </div>

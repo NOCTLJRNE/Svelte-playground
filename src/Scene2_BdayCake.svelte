@@ -107,7 +107,7 @@
         alt=""
         in:fly={{ delay: 2000, duration: 1000, x: 100, easing: cubicOut }}
         out:blur={{ delay: 0, duration: 2000 }}
-        on:introend={() => startCountDown(4000)} />
+        on:introend={() => startCountDown(3500)} />
     {/if}
   </div>
 </div>

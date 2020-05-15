@@ -2,15 +2,20 @@
   import Scene1_IntroMessage from "./Scene1_IntroMessage.svelte";
   import Scene2_BdayCake from "./Scene2_BdayCake.svelte";
   import Scene3_GiftBox from "./Scene3_GiftBox.svelte";
+  import Scene4_Message from "./Scene4_Message.svelte";
   import { link } from "svelte-spa-router";
   import { onMount } from "svelte";
   import { blur, draw, fade, fly } from "svelte/transition";
 
   let visible1 = false;
+  let scene1Visible = true;
   let scene2Visible = false;
   let scene2Start = false;
   let scene3Visible = false;
+  let scene4Visible = false;
   let scene3Start = false;
+  let scene4Start = false;
+  let scene3Ended = false;
   let visible3 = false;
   let visible4 = false;
   let visible5 = false;
@@ -22,15 +27,23 @@
   });
   function bgm1Ended() {
     // console.log("Song ended !");
-    scene3Start = false;
+    // scene3Start = false;
+    scene3Ended = true;
   }
   function startScene2() {
+    scene1Visible = false;
     scene2Visible = true;
     scene2Start = true;
   }
   function startScene3() {
     scene3Visible = true;
     scene3Start = true;
+    scene2Visible = false;
+  }
+  function startScene4() {
+    scene4Visible = true;
+    scene4Start = true;
+    scene3Visible = false;
   }
 </script>
 
@@ -57,13 +70,22 @@
     on:ended={bgm1Ended}
     src="./media/bgm/Happy_Birthday_Music_Box_Version_1_cut.mp3" />
   <!-- <button on:click={() => (visible2 = false)}>visible2</button> -->
-  {#if !scene2Visible}
+  {#if scene1Visible}
     <Scene1_IntroMessage on:scene1Ended={startScene2} />
   {/if}
   {#if scene2Visible}
     <Scene2_BdayCake on:scene2Ended={startScene3} {scene2Start} />
   {/if}
   {#if scene3Visible}
-    <Scene3_GiftBox {scene3Start} />
+    <Scene3_GiftBox
+      on:scene3EndedEvent={startScene4}
+      {scene3Start}
+      {scene3Ended} />
+    <!-- <Scene3_GiftBox {scene3Ended} /> -->
   {/if}
+  {#if scene4Visible}
+    <Scene4_Message {scene4Start} />
+    <!-- <Scene3_GiftBox {scene3Ended} /> -->
+  {/if}
+
 </div>
