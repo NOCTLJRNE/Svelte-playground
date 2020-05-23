@@ -7,7 +7,8 @@
   export let scene3Ended = false;
   const dispatch = createEventDispatcher();
   let gift = {
-    yPos: -55,
+    yPos: 135,
+    // yPos: -55,
     op: 1
   };
   let rightIndexX = 30;
@@ -22,7 +23,8 @@
   }
   onMount(() => {
     let frame;
-    let ySpeed = 1.5;
+    let ySpeed = -2.5;
+    // let ySpeed = 1.5
     let xAmplitude = 0.035;
     function loop() {
       frame = requestAnimationFrame(loop);
@@ -40,12 +42,13 @@
         //   startIndexAnimOnce = false;
         // }
       }
-      if (gift.yPos > 130) {
-        gift.yPos = -55;
+      // if (gift.yPos > 130) {
+      //   gift.yPos = -55;
+      if (gift.yPos < -55) {
         ySpeed = 0.2;
         dropCounter += 1;
       }
-      if (gift.yPos > 20 && dropCounter === 1) {
+      if (gift.yPos > 20 && dropCounter >= 1) {
         destReached = true;
       }
       if (destReached && xAmplitude > 0.005) {

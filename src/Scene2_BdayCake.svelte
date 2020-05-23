@@ -27,7 +27,11 @@
   #stickerContainer {
     display: flex;
     justify-content: center;
-    margin-top: 35%;
+    margin-top: 40vh;
+    /* display: flex;
+    position: absolute;
+    justify-content: center;
+    top: 45vh; */
   }
   #img01 {
     height: 25vh;

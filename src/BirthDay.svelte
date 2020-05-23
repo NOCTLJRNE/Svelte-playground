@@ -20,16 +20,21 @@
   let visible4 = false;
   let visible5 = false;
   let ending1 = true;
+  let bgm2Ended = false;
   let bgm1;
+  let bgm2;
+  const bgm2Delay = 2000;
   onMount(() => {
     // bgm1.volume = 0.7;
     bgm1.volume = 0.2;
+    bgm2.volume = 0.2;
   });
   function bgm1Ended() {
     // console.log("Song ended !");
     // scene3Start = false;
     scene3Ended = true;
   }
+  // function bgm2Ended() {}
   function startScene2() {
     scene1Visible = false;
     scene2Visible = true;
@@ -44,6 +49,9 @@
     scene4Visible = true;
     scene4Start = true;
     scene3Visible = false;
+    setTimeout(() => {
+      bgm2.play();
+    }, bgm2Delay);
   }
 </script>
 
@@ -69,6 +77,12 @@
     autoplay
     on:ended={bgm1Ended}
     src="./media/bgm/Happy_Birthday_Music_Box_Version_1_cut.mp3" />
+  <audio
+    bind:this={bgm2}
+    on:ended={() => {
+      bgm2Ended = true;
+    }}
+    src="./media/bgm/Drop That Booty Down Low drop.mp3" />
   <!-- <button on:click={() => (visible2 = false)}>visible2</button> -->
   {#if scene1Visible}
     <Scene1_IntroMessage on:scene1Ended={startScene2} />
@@ -84,7 +98,7 @@
     <!-- <Scene3_GiftBox {scene3Ended} /> -->
   {/if}
   {#if scene4Visible}
-    <Scene4_Message {scene4Start} />
+    <Scene4_Message {scene4Start} {bgm2Delay} {bgm2Ended} />
     <!-- <Scene3_GiftBox {scene3Ended} /> -->
   {/if}
 
