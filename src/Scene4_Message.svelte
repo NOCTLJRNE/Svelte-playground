@@ -7,6 +7,10 @@
   export let bgm2Delay;
   export let bgm2Ended = false;
   let heartsActivated = false;
+  const X_MAX = 93;
+  const X_MIN = 3;
+  const Y_MAX = 90;
+  const Y_MIN = 3;
   const beatPeriod = 2500;
   const beatIntroDelay = 1600;
   const emojisCount = 30;
@@ -19,8 +23,8 @@
       return {
         // character: characters[i % characters.length],
         character: emojisSelection[emojiIndex],
-        x: Math.random() * 100,
-        y: Math.random() * 100,
+        x: Math.random() * (X_MAX - X_MIN) + X_MIN,
+        y: Math.random() * (Y_MAX - Y_MIN) + Y_MIN,
         r: 0.1 + Math.random(0.7) * 1,
         t: 0
       };
@@ -47,8 +51,8 @@
         return {
           // character: characters[i % characters.length],
           character: emojisSelection[emojiIndex],
-          x: Math.random() * 100,
-          y: Math.random() * 100,
+          x: Math.random() * (X_MAX - X_MIN) + X_MIN,
+          y: Math.random() * (Y_MAX - Y_MIN) + Y_MIN,
           r: 0.1 + Math.random(0.7) * 1,
           t: 0
         };

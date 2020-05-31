@@ -3,6 +3,7 @@
   import Scene2_BdayCake from "./Scene2_BdayCake.svelte";
   import Scene3_GiftBox from "./Scene3_GiftBox.svelte";
   import Scene4_Message from "./Scene4_Message.svelte";
+  import Scene5_TheEnd from "./Scene5_TheEnd.svelte";
   import { link } from "svelte-spa-router";
   import { onMount } from "svelte";
   import { blur, draw, fade, fly } from "svelte/transition";
@@ -13,6 +14,7 @@
   let scene2Start = false;
   let scene3Visible = false;
   let scene4Visible = false;
+  let scene5Visible = false;
   let scene3Start = false;
   let scene4Start = false;
   let scene3Ended = false;
@@ -81,6 +83,10 @@
     bind:this={bgm2}
     on:ended={() => {
       bgm2Ended = true;
+      setTimeout(() => {
+        scene4Visible = false;
+        scene5Visible = true;
+      }, 1000);
     }}
     src="./media/bgm/Drop That Booty Down Low drop.mp3" />
   <!-- <button on:click={() => (visible2 = false)}>visible2</button> -->
@@ -100,6 +106,9 @@
   {#if scene4Visible}
     <Scene4_Message {scene4Start} {bgm2Delay} {bgm2Ended} />
     <!-- <Scene3_GiftBox {scene3Ended} /> -->
+  {/if}
+  {#if scene5Visible}
+    <Scene5_TheEnd />
   {/if}
 
 </div>

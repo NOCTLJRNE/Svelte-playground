@@ -5,7 +5,7 @@
   let visible2 = false;
   let visible3 = false;
   let visible4 = false;
-  let inSpeed = 0.075;
+  let inSpeed = 0.2;
   let maskOutSpeed = 0.1;
   let strokeOutSpeed = 0.12;
   let color = "rgb(200, 200, 200)";

@@ -2,6 +2,14 @@
   // import TTTVcaps from "../svg/TTTVcaps.svelte";
   import HappyBirthday from "../svg/HappyBirthday.svelte";
   import HaBi from "../svg/HaBi.svelte";
+  import Ha_Bi_SandyBrown from "../svg/Ha_Bi_SandyBrown.svelte";
+  import HAPPY_UpSandyBrown from "../svg/HAPPY_UpSandyBrown.svelte";
+  import H_SandyBrown from "../svg/H_SandyBrown.svelte";
+  import A_SandyBrown from "../svg/A_SandyBrown.svelte";
+  import A_UpSandyBrown from "../svg/A_UpSandyBrown.svelte";
+  import P_UpSandyBrown from "../svg/P_UpSandyBrown.svelte";
+  import Y_UpSandyBrown from "../svg/Y_UpSandyBrown.svelte";
+  import I_SandyBrown from "../svg/I_SandyBrown.svelte";
   import Kitty from "../svg/Kitty.svelte";
 
   import { onMount } from "svelte";
@@ -120,7 +128,15 @@
     <!-- <O2maj2 /> -->
     <!-- <Lmaj /> -->
   {/if}
-  <HaBi />
+  <!-- <HaBi /> -->
+  <HAPPY_UpSandyBrown />
+  <!-- <H_SandyBrown /> -->
+  <!-- <A_SandyBrown /> -->
+  <!-- <A_UpSandyBrown /> -->
+  <!-- <P_UpSandyBrown /> -->
+  <!-- <Y_UpSandyBrown /> -->
+  <!-- <I_SandyBrown /> -->
+  <!-- <Ha_Bi_SandyBrown /> -->
   {#if visible4}
     <Kitty />
   {/if}
