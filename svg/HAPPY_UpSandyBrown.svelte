@@ -36,8 +36,8 @@
   xmlns="http://www.w3.org/2000/svg"
   id="svg11124"
   version="1.1"
-  viewBox="0 0 210 297"
-  height="297mm"
+  viewBox="0 0 210 200"
+  height="200mm"
   width="210mm">
   <defs id="defs11118">
     <mask maskUnits="userSpaceOnUse" id="mask2052">

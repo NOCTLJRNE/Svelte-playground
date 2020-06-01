@@ -23,5 +23,7 @@
   <br />
   <a href="/dance" use:link>Let's party 🎉!</a>
   <br />
+  <a href="/scene5" use:link>🎞️ Scene 5! 🎞️!</a>
+  <br />
   <a href="/birthday" use:link>🎂🎁🍰🎉</a>
 </h2>

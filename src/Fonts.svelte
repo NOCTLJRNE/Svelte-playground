@@ -4,12 +4,19 @@
   import HaBi from "../svg/HaBi.svelte";
   import Ha_Bi_SandyBrown from "../svg/Ha_Bi_SandyBrown.svelte";
   import HAPPY_UpSandyBrown from "../svg/HAPPY_UpSandyBrown.svelte";
+  import BIRTHDAY_UpSandyBrown from "../svg/BIRTHDAY_UpSandyBrown.svelte";
+  import BIRTHDAY_UpSandyBrown_Test from "../svg/BIRTHDAY_UpSandyBrown_Test.svelte";
+  import HAPPY_UpSandyBrown_Center from "../svg/HAPPY_UpSandyBrown_Center.svelte";
   import H_SandyBrown from "../svg/H_SandyBrown.svelte";
   import A_SandyBrown from "../svg/A_SandyBrown.svelte";
   import A_UpSandyBrown from "../svg/A_UpSandyBrown.svelte";
   import P_UpSandyBrown from "../svg/P_UpSandyBrown.svelte";
   import Y_UpSandyBrown from "../svg/Y_UpSandyBrown.svelte";
-  import I_SandyBrown from "../svg/I_SandyBrown.svelte";
+  import B_UpSandyBrown from "../svg/B_UpSandyBrown.svelte";
+  import I_UpSandyBrown from "../svg/I_UpSandyBrown.svelte";
+  import R_UpSandyBrown from "../svg/R_UpSandyBrown.svelte";
+  import T_UpSandyBrown from "../svg/T_UpSandyBrown.svelte";
+  import D_UpSandyBrown from "../svg/D_UpSandyBrown.svelte";
   import Kitty from "../svg/Kitty.svelte";
 
   import { onMount } from "svelte";
@@ -129,13 +136,22 @@
     <!-- <Lmaj /> -->
   {/if}
   <!-- <HaBi /> -->
-  <HAPPY_UpSandyBrown />
+  <!-- <HAPPY_UpSandyBrown /> -->
+
+  <HAPPY_UpSandyBrown_Center />
+  <BIRTHDAY_UpSandyBrown />
+  <!-- <BIRTHDAY_UpSandyBrown_Test /> -->
   <!-- <H_SandyBrown /> -->
   <!-- <A_SandyBrown /> -->
   <!-- <A_UpSandyBrown /> -->
   <!-- <P_UpSandyBrown /> -->
   <!-- <Y_UpSandyBrown /> -->
-  <!-- <I_SandyBrown /> -->
+  <!-- <B_UpSandyBrown /> -->
+  <!-- <I_UpSandyBrown /> -->
+  <!-- <R_UpSandyBrown /> -->
+  <!-- <T_UpSandyBrown /> -->
+  <!-- <D_UpSandyBrown /> -->
+
   <!-- <Ha_Bi_SandyBrown /> -->
   {#if visible4}
     <Kitty />
