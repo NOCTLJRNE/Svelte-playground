@@ -1,6 +1,7 @@
 <script>
   import { blur, draw } from "svelte/transition";
   import { linear } from "svelte/easing";
+  import { createEventDispatcher } from "svelte";
   let visible1 = false;
   let visible2 = false;
   let visible3 = false;
@@ -15,6 +16,7 @@
   let strokeOutSpeed = 0.12;
   let color = "rgb(200, 200, 200)";
   export let startBIRTHDAY = false;
+  const dispatch = createEventDispatcher();
   function toggleVisible() {
     visible1 = false;
     visible2 = false;
@@ -32,6 +34,7 @@
   #svg15148 {
     position: absolute;
     top: 65vh;
+    z-index: 2;
   }
 </style>
 
@@ -208,6 +211,9 @@
           <path
             in:draw={{ easing: linear, speed: inSpeed }}
             out:blur={{ radius: 20, duration: 1500 }}
+            on:introend={() => {
+              dispatch('finishedBIRTHDAY', { text: 'BIRTHDAY finished !' });
+            }}
             sodipodi:nodetypes="cccccc"
             inkscape:connector-curvature="0"
             id="path11113"

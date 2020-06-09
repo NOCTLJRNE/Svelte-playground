@@ -24,6 +24,14 @@
   }
 </script>
 
+<style>
+  #svg11124 {
+    position: absolute;
+    left: 20vw;
+    z-index: 2;
+  }
+</style>
+
 <div>
 
   <!-- <button
@@ -141,7 +149,7 @@
             in:draw={{ easing: linear, speed: inSpeed }}
             out:blur={{ radius: 20, duration: 1500 }}
             on:introend={() => {
-              dispatch('finishedHAPPY', { test: 'HAPPY finished !' });
+              dispatch('finishedHAPPY', { text: 'HAPPY finished !' });
               console.log('finished HAPPY !');
             }}
             sodipodi:nodetypes="cccccc"
