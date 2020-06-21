@@ -2,6 +2,7 @@
   import { blur, draw } from "svelte/transition";
   import { linear } from "svelte/easing";
   import { createEventDispatcher } from "svelte";
+  const strokeColor = "#ffffff";
   let visible1 = false;
   let visible2 = false;
   let visible3 = false;
@@ -33,7 +34,8 @@
 <style>
   #svg15148 {
     position: absolute;
-    top: 65vh;
+    top: 62vh;
+    left: 10vw;
     z-index: 2;
   }
 </style>
@@ -55,8 +57,8 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-    width="230mm"
-    height="200mm"
+    width="100%"
+    height="100%"
     viewBox="0 0 230 200"
     version="1.1"
     id="svg15148"
@@ -84,7 +86,7 @@
             -2.6755,4.45916 -6.54011,8.62105 -11.59382,11.29654 -5.05372,2.6755
             -16.94482,6.24283 -16.94482,6.24283 L 89.777791,199.1759
             37.159682,188.47391"
-            style="fill:none;stroke:#f4a460;stroke-width:22.20000076;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:22.20000076;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask14013" maskUnits="userSpaceOnUse">
@@ -100,7 +102,7 @@
             id="path14015"
             d="M 104.64166,73.724807 65.103765,235.44374 30.322301,200.95956
             123.37015,187.87935 47.564395,115.34365 147.15234,100.77706"
-            style="fill:none;stroke:#f4a460;stroke-width:20.69999886;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:20.69999886;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask14574" maskUnits="userSpaceOnUse">
@@ -125,7 +127,7 @@
             -22.281937,1.05104 l 11.981794,-7.77766 3.993933,14.71449 c 0,0
             0.84083,2.94289 2.9429,6.3062 2.10206,3.36331 7.77765,10.08994
             7.77765,10.08994 l 9.0389,10.51034 9.87972,8.19807 30.69021,-2.73269"
-            style="fill:none;stroke:#f4a460;stroke-width:20.80000114;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:20.80000114;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask15135" maskUnits="userSpaceOnUse">
@@ -141,7 +143,7 @@
             id="path15137"
             d="M 109.72801,91.034389 78.617383,217.57895 48.768005,112.26529
             167.53491,102.38556"
-            style="fill:none;stroke:#f4a460;stroke-width:21;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:21;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask2052H2" maskUnits="userSpaceOnUse">
@@ -161,7 +163,7 @@
             -78.571433,13.57142 -78.571433,11.78571 0,-1.78571
             10.357141,-64.64286 10.357141,-64.64286 l 37.5,-8.21428
             38.928572,-5.71429 23.92857,-0.35713"
-            style="fill:none;stroke:#f4a460;stroke-width:21.78897667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:21.78897667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask13452" maskUnits="userSpaceOnUse">
@@ -185,7 +187,7 @@
             -12.18838,-8.02649 0,0 -2.37822,-1.48638 -8.62104,-2.08094
             -6.24283,-0.59455 -19.620314,2.37822 -27.052252,4.16189
             -7.431935,1.78366 -43.105232,19.02575 -43.105232,19.02575"
-            style="fill:none;stroke:#f4a460;stroke-width:21.10000038;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:21.10000038;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask5445" maskUnits="userSpaceOnUse">
@@ -203,7 +205,7 @@
             8.40828,-2.10207 -2.52248,15.97572 -3.73272,64.99 1.28237,21.66625
             -61.452554,30.21879 -43.723036,-27.32689 31.531036,-40.78014
             12.192,-4.20414 98.488034,-7.69059"
-            style="fill:none;stroke:#f4a460;stroke-width:21.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:21.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask11111Y2" maskUnits="userSpaceOnUse">
@@ -219,7 +221,7 @@
             id="path11113"
             d="m 71.890765,87.671079 3.363307,69.998901 14.714483,1.47145 L
             148.40608,89.142528 97.115589,102.38556 66.004967,222.6239"
-            style="fill:none;stroke:#f4a460;stroke-width:21.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:21.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
 

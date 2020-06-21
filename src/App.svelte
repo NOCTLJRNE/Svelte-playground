@@ -7,11 +7,13 @@
   import AirDrop from "./AirDrop.svelte";
   import Dance from "./Dance.svelte";
   import BirthDay from "./BirthDay.svelte";
+  import Scene2_BdayCake from "./Scene2_BdayCake.svelte";
+  import Scene3_GiftBox from "./Scene3_GiftBox.svelte";
   import Scene4_Message from "./Scene4_Message.svelte";
   import Scene5_TheEnd from "./Scene5_TheEnd.svelte";
   // import Congrats from "./Congrats.svelte";
   import Router from "svelte-spa-router";
-  import { onDestroy } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import { link } from "svelte-spa-router";
 
   const routes = {
@@ -23,10 +25,17 @@
     "/airdrop": AirDrop,
     "/dance": Dance,
     "/birthday": BirthDay,
+    "/scene2": Scene2_BdayCake,
+    "/scene3": Scene3_GiftBox,
     "/scene4": Scene4_Message,
     "/scene5": Scene5_TheEnd
   };
-
+  onMount(() => {
+    console.log("screen width:", screen.width);
+    console.log("screen height:", screen.height);
+    console.log("viewport width:", window.innerWidth);
+    console.log("viewport height:", window.innerHeight);
+  });
   //Keypad
 </script>
 

@@ -1,6 +1,10 @@
 <script>
   import { blur, draw } from "svelte/transition";
   import { linear } from "svelte/easing";
+  export let easing;
+  export let speed;
+  export let radius;
+  export let duration;
 </script>
 
 <svg
@@ -12,8 +16,8 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-  width="210mm"
-  height="297mm"
+  width="100%"
+  height="100%"
   viewBox="0 0 210 297"
   version="1.1"
   id="svg8"
@@ -22,8 +26,8 @@
   <defs id="defs2">
     <mask maskUnits="userSpaceOnUse" id="mask833">
       <path
-        in:draw={{ easing: linear, speed: 0.15 }}
-        out:blur={{ radius: 20, duration: 1500 }}
+        in:draw={{ easing: easing, speed: speed }}
+        out:blur={{ radius: radius, duration: duration }}
         style="fill:none;stroke:#ffffff;stroke-width:33.16500092;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
         d="M 17.10525,45.232106 194.30495,66.346398 3.2072342,81.58076 c 0,0
         74.0336658,-5.879928 125.0821358,7.750818 51.04848,13.630742

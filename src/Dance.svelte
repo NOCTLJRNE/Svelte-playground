@@ -27,7 +27,7 @@
       posX -= 0.4;
       if (posX < -20) posX = 120;
       stickerArray = stickerArray.map((sticker, i) => {
-        sticker.x = sticker.x - sticker.d * 0.4 * sticker.r;
+        sticker.x = sticker.x - sticker.d * 0.4 * sticker.r; // with d=1, this is equivalent to moving emojito the left
         if (sticker.x < -20 && sticker.d == 1) {
           sticker.x = 80 + Math.random() * 20;
           sticker.y = Math.random() * 60;

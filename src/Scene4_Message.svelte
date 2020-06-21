@@ -10,6 +10,35 @@
   const UNIT = "%";
   const STARTING_POINT = 5;
   const ENDING_POINT = 75;
+
+  //resize emojis based on screen resolution
+  const partyingHeight = 497;
+  const partyingWidth = 476;
+  const partyingRatioToScreenHeight = 0.35;
+  const partyingTargetHeight = partyingRatioToScreenHeight * screen.height;
+  const partyingResizeRatio =
+    Math.round((partyingTargetHeight * 100) / partyingHeight) / 100;
+  const partyingResizeWidth = partyingWidth * partyingResizeRatio;
+  const partyingResizeHeight = partyingHeight * partyingResizeRatio;
+
+  const spinningHeight = 479;
+  const spinningWidth = 360;
+  const spinningRatioToScreenHeight = 0.3;
+  const spinningTargetHeight = spinningRatioToScreenHeight * screen.height;
+  const spinningResizeRatio =
+    Math.round((spinningTargetHeight * 100) / spinningHeight) / 100;
+  const spinningResizeWidth = spinningWidth * spinningResizeRatio;
+  const spinningResizeHeight = spinningHeight * spinningResizeRatio;
+
+  const twistingHeight = 485;
+  const twistingWidth = 347;
+  const twistingRatioToScreenHeight = 0.3;
+  const twistingTargetHeight = twistingRatioToScreenHeight * screen.height;
+  const twistingResizeRatio =
+    Math.round((twistingTargetHeight * 100) / twistingHeight) / 100;
+  const twistingResizeWidth = twistingWidth * twistingResizeRatio;
+  const twistingResizeHeight = twistingHeight * twistingResizeRatio;
+
   let heartsActivated = false;
   let startDancing = false;
   let scticker01Visible = false;
@@ -28,13 +57,13 @@
   let emoji1ScaleY = 0.6;
   let emoji2ScaleX = -0.6;
   let emoji2ScaleY = 0.6;
-  const X_MAX = 93;
-  const X_MIN = 3;
-  const Y_MAX = 90;
-  const Y_MIN = 3;
+  const X_MAX = 96;
+  const X_MIN = 0;
+  const Y_MAX = 94;
+  const Y_MIN = 0;
   const beatPeriod = 2500;
   const beatIntroDelay = 1600;
-  const emojisCount = 30;
+  const emojisCount = 40;
   const emojisSelection = [
     "🥳",
     "🎁",
@@ -46,6 +75,36 @@
     "🗼",
     "❤️"
   ];
+  let messagesIndex = 0;
+  const messages = [
+    "Party",
+    "Gift",
+    "Luck",
+    "Cake",
+    "Money",
+    "House",
+    "Car",
+    "Travel",
+    "Love"
+  ];
+  const STICKERCOUNT = 4;
+  const stickersName = ["twisting", "spinning"];
+  let stickerArray = new Array(STICKERCOUNT).fill().map((_, i) => {
+    let d = i % 2 ? 1 : -1;
+    let clipping = i < 2 ? 29 : 0; // only clip twisting sticker
+    // let clipping = 29;
+    return {
+      x: i % 2 ? 120 : -20,
+      y: Math.random() * 60,
+      r: 0.5 + Math.random() * (1 - 0.5),
+      // r: (0.2 + Math.random() * (0.5 - 0.2)),
+      name: i < 2 ? "twisting" : "spinning", // first half array is twisting
+      d: d,
+      c: clipping,
+      w: i < 2 ? twistingResizeWidth : spinningResizeWidth,
+      h: i < 2 ? twistingResizeHeight : spinningResizeHeight
+    };
+  });
   let emojiIndex = 0;
   let dropTheBeatCount = 0;
   let timer1 = null;
@@ -73,9 +132,9 @@
           } else if (dropTheBeatCount === 2) {
             scticker02Visible = true;
           } else if (dropTheBeatCount === 3) {
-            startDancing = true;
+            // startDancing = true;
           }
-          console.log("dropTheBeatCount: ", dropTheBeatCount);
+          // console.log("dropTheBeatCount: ", dropTheBeatCount);
           dropTheEmojis(); // replace this with the beating effect
         } else {
           clearInterval(timer1);
@@ -100,6 +159,32 @@
           emoji1XLeftString = emoji1XLeft + UNIT;
           emoji2XRightString = emoji2XRight + UNIT;
         }
+        stickerArray = stickerArray.map((sticker, i) => {
+          sticker.x = sticker.x - sticker.d * 0.4 * sticker.r;
+          if (i < 2) {
+            if (sticker.x < 20 && sticker.d == 1) {
+              sticker.d = -1;
+              // sticker.x = 80 + Math.random() * 20;
+              // sticker.y = Math.random() * 60;
+              // sticker.r = 0.5 * (0.1 + Math.random(0.7) * 1);
+            } else if (sticker.x > 80 && sticker.d == -1) {
+              sticker.d = 1;
+              // sticker.x = -20 + Math.random() * 20;
+              // sticker.y = Math.random() * 60;
+              // sticker.r = 0.5 * (0.1 + Math.random(0.7) * 1);
+            }
+          } else {
+            //spinning
+            if (sticker.x < -20 && sticker.d == 1) {
+              sticker.x = 100;
+              sticker.y = Math.random() * (Y_MAX - Y_MIN) + Y_MIN;
+            } else if (sticker.x > 100 && sticker.d == -1) {
+              sticker.x = 0;
+              sticker.y = Math.random() * (Y_MAX - Y_MIN) + Y_MIN;
+            }
+          }
+          return sticker;
+        });
       }
       loop();
       return () => cancelAnimationFrame(frame);
@@ -122,8 +207,13 @@
       })
       .sort((a, b) => a.r - b.r);
     heartsActivated = true;
+    // messagesIndex = emojiIndex;
+    // console.log("messagesIndex: ", messagesIndex);
     emojiIndex = (emojiIndex + 1) % emojisSelection.length;
-    setTimeout(() => (heartsActivated = false), 1000);
+    setTimeout(() => {
+      heartsActivated = false;
+      messagesIndex = (messagesIndex + 1) % messages.length;
+    }, 1000);
   }
   function appearScaleOut(node, { duration, index }) {
     return {
@@ -151,12 +241,15 @@
         const circEasedIn2 = circIn(u);
         const cubicEasedIn2 = cubicIn(u);
         const c1 = 4;
-        const c2 = 4;
-        const r = radius * cubicEasedIn2 * emojisArray[index].r;
+        // const c2 = 4;
+        // const r = radius * cubicEasedIn2 * emojisArray[index].r;
         return `
-          filter: blur(${r}vh);
           transform: scale(${emojisArray[index].r + c1 * circEasedIn2});
           opacity: ${sineEasedIn};`;
+        // return `
+        //   filter: blur(${r}vh);
+        //   transform: scale(${emojisArray[index].r + c1 * circEasedIn2});
+        //   opacity: ${sineEasedIn};`;
       }
     };
   }
@@ -167,6 +260,10 @@
     position: absolute;
     font-size: 5vw;
     z-index: 2;
+  }
+  .motion {
+    position: absolute;
+    /* height: 50vh; */
   }
   #flex-container {
     display: flex;
@@ -181,18 +278,18 @@
     z-index: 0.5;
   } */
   #scticker01 {
-    /* transform: scale(0.6); */
+    transform: scale(1);
     position: absolute;
-    top: 1%;
+    top: 0%;
     /* right: auto; */
     /* left: 3%; */
     /* top: 80%;
     left: 10%; */
   }
   #scticker02 {
-    /* transform: scaleX(-0.6) scaleY(0.6); */
+    transform: scaleX(-1) scaleY(1);
     position: absolute;
-    bottom: 3%;
+    bottom: 0%;
     /* left: auto; */
     /* right: 3%; */
     /* top: 80%;
@@ -201,6 +298,14 @@
   /* #spacer {
     width: 500px;
   } */
+  #message2 {
+    position: absolute;
+    z-index: 4;
+    margin-top: 20vh;
+    font-family: "Sriracha", serif;
+    font-size: 8vh;
+    color: deepskyblue;
+  }
 </style>
 
 <div id="flex-container">
@@ -216,8 +321,12 @@
         style="left: {heart.x}%; top: {heart.y}%; transform: scale({heart.r})">
         {heart.character}
       </span>
+
       <!-- note: the transiton total duration must exactly match the timer, otherwise emoji scale will be reverted-->
     {/each}
+    <h3 id="message2" in:fade={{ duration: 500 }} out:fade={{ duration: 500 }}>
+      {messages[messagesIndex]}
+    </h3>
   {/if}
   {#if scticker01Visible}
     <img
@@ -225,8 +334,8 @@
       id="scticker01"
       src="./media/usagyuuun/partying.gif"
       alt=""
-      style="left: {emoji1XLeftString}; right: {emoji1XRightString}; transform:
-      scaleX({emoji1ScaleX}) scaleY({emoji1ScaleY})" />
+      style="left: {emoji1XLeftString}; right: {emoji1XRightString}; width: {partyingResizeWidth}px;
+      height: {partyingResizeHeight}px" />
   {/if}
   {#if scticker02Visible}
     <img
@@ -234,8 +343,22 @@
       id="scticker02"
       src="./media/usagyuuun/partying.gif"
       alt=""
-      style="left: {emoji2XLeftString};right: {emoji2XRightString}; transform:
-      scaleX({emoji2ScaleX}) scaleY({emoji2ScaleY})" />
+      style="left: {emoji2XLeftString};right: {emoji2XRightString}; width: {partyingResizeWidth}px;
+      height: {partyingResizeHeight}px" />
   {/if}
-
+  {#each stickerArray as sticker, i}
+    <img
+      style="left: {sticker.x}%; top: {sticker.y}vh; transform: scaleX({sticker.d})
+      scaleY(1); width: {sticker.w * sticker.r}px; height: {sticker.h * sticker.r}px;
+      clip-path: inset({sticker.c}% 0 0 0)"
+      class="motion"
+      src="./media/usagyuuun/{sticker.name}.gif"
+      alt="" />
+    <!-- <img
+      style="left: {sticker.x}vw; top: {sticker.y}vh; transform: scaleX({sticker.d * sticker.r})
+      scaleY({sticker.r}); clip-path: inset({sticker.c}% 0 0 0)"
+      class="motion"
+      src="./media/usagyuuun/{sticker.name}.gif"
+      alt="" /> -->
+  {/each}
 </div>

@@ -28,6 +28,10 @@
     <br />
     <a href="/dance" use:link>Let's party 🎉!</a>
     <br />
+    <a href="/scene2" use:link>🎞️ Scene 2! 🎞️!</a>
+    <br />
+    <a href="/scene3" use:link>🎞️ Scene 3! 🎞️!</a>
+    <br />
     <a href="/scene4" use:link>🎞️ Scene 4! 🎞️!</a>
     <br />
     <a href="/scene5" use:link>🎞️ Scene 5! 🎞️!</a>

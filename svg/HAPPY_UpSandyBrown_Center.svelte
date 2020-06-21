@@ -3,6 +3,7 @@
   import { linear } from "svelte/easing";
   import { createEventDispatcher } from "svelte";
 
+  const strokeColor = "#ffffff";
   let visible1 = false;
   let visible2 = false;
   let visible3 = false;
@@ -27,7 +28,8 @@
 <style>
   #svg11124 {
     position: absolute;
-    left: 20vw;
+    top: -5vh;
+    left: -15vw;
     z-index: 2;
   }
 </style>
@@ -50,8 +52,8 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-    width="210mm"
-    height="200mm"
+    width="100%"
+    height="100%"
     viewBox="0 0 210 200"
     version="1.1"
     id="svg11124"
@@ -74,7 +76,7 @@
             -78.571433,13.57142 -78.571433,11.78571 0,-1.78571
             10.357141,-64.64286 10.357141,-64.64286 l 37.5,-8.21428
             38.928572,-5.71429 23.92857,-0.35713"
-            style="fill:none;stroke:#f4a460;stroke-width:21.78897667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:21.78897667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask6009" maskUnits="userSpaceOnUse">
@@ -85,7 +87,7 @@
             on:introend={() => {
               visible3 = true;
             }}
-            style="fill:none;stroke:#f4a460;stroke-width:21.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+            style="fill:none;stroke:{strokeColor};stroke-width:21.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
             d="m 54.233383,207.27881 59.278347,-85.344 14.71448,-13.03283
             8.40828,-2.10207 -2.52248,15.97572 -3.73272,64.99 1.28237,21.66625
             -61.452554,30.21879 -43.723036,-27.32689 31.531036,-40.78014
@@ -116,7 +118,7 @@
             -5.25518,5.88579 -5.25518,5.88579 0,0 -2.52248,2.10207
             -5.67558,3.15311 -3.15311,1.05103 -8.40828,3.36331 -8.40828,3.36331
             l -9.2491,1.26124 H 86.605248"
-            style="fill:none;stroke:#f4a460;stroke-width:20.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:20.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask4884-3" maskUnits="userSpaceOnUse">
@@ -140,7 +142,7 @@
             -5.25518,5.88579 -5.25518,5.88579 0,0 -2.52248,2.10207
             -5.67558,3.15311 -3.15311,1.05103 -8.40828,3.36331 -8.40828,3.36331
             l -9.2491,1.26124 H 86.605248"
-            style="fill:none;stroke:#f4a460;stroke-width:20.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:20.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
       <mask id="mask11111" maskUnits="userSpaceOnUse">
@@ -157,7 +159,7 @@
             id="path11113"
             d="m 71.890765,87.671079 3.363307,69.998901 14.714483,1.47145 L
             148.40608,89.142528 97.115589,102.38556 66.004967,222.6239"
-            style="fill:none;stroke:#f4a460;stroke-width:21.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            style="fill:none;stroke:{strokeColor};stroke-width:21.89999962;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         {/if}
       </mask>
     </defs>

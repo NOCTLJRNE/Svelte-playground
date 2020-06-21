@@ -2,6 +2,7 @@
   //   import HAPPY_UpSandyBrown from "../svg/HAPPY_UpSandyBrown.svelte";
   import HAPPY_UpSandyBrown_Center from "../svg/HAPPY_UpSandyBrown_Center.svelte";
   import BIRTHDAY_UpSandyBrown from "../svg/BIRTHDAY_UpSandyBrown.svelte";
+  import Kitty from "../svg/Kitty.svelte";
   import { onMount, onDestroy } from "svelte";
   import { blur, draw, fade, fly } from "svelte/transition";
   import {
@@ -13,7 +14,8 @@
     cubicOut,
     circIn,
     circOut,
-    sineIn
+    sineIn,
+    linear
   } from "svelte/easing";
   const emojisSelection = [
     "🥳",
@@ -26,12 +28,24 @@
     "🗼",
     "❤️"
   ];
-  const emojisCount = emojisSelection.length * 2;
+  const emojisCount = emojisSelection.length * 1;
+  const easing = linear;
+  const speed = "0.3";
+  const radius = "20";
+  const duration = "1500";
+  const portraitBorder = screen.width > 1200 ? 4 : 2;
+
+  const paintingRatioToScreenHeight = 0.8;
+  const paintingTargetHeight = paintingRatioToScreenHeight * screen.height;
+
   let startHAPPY = false;
   let startBIRTHDAY = false;
   let showPhoto1 = false;
   let showPhoto2 = false;
   let showPhoto3 = false;
+  let showPhoto4 = false;
+  let viewPort01;
+  let viewPort02;
   let emojisArray = new Array(emojisCount).fill().map((_, i) => {
     return {
       character: emojisSelection[i % emojisSelection.length],
@@ -43,6 +57,10 @@
     };
   });
   onMount(() => {
+    // console.log("viewPort01 x: ", viewPort01.offsetLeft);
+    // console.log("viewPort01 y: ", viewPort01.offsetTop);
+    // console.log("viewPort02 x: ", viewPort02.offsetLeft);
+    // console.log("viewPort02 y: ", viewPort02.offsetTop);
     setTimeout(() => {
       startHAPPY = true;
     }, 1000);
@@ -138,30 +156,39 @@
   #portrait_01 {
     left: 15%;
     top: 40%;
-    width: 20vh;
+    width: 25vh;
     height: auto;
     transform: rotate(0.025turn);
     /* padding: 2px; */
-    border: 4px solid;
-    border-image: radial-gradient(rgb(0, 143, 104), rgb(209, 253, 203)) 1;
+    /* border: 4px solid; */
+    /* border-image: radial-gradient(rgb(0, 143, 104), rgb(209, 253, 203)) 1; */
     /* border: 2px solid #021a40;
     background-color: royalblue; */
   }
   #portrait_02 {
     left: 75%;
     top: 40%;
-    width: 18vh;
+    width: 25vh;
     height: auto;
-    border: 4px solid;
-    border-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) 1;
+    /* border: 4px solid; */
+    /* border-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) 1; */
   }
   #portrait_03 {
     left: 45%;
     top: 40%;
-    width: 18vh;
+    width: 25vh;
     height: auto;
-    border: 4px solid;
-    border-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) 1;
+    /* border: 4px solid; */
+    /* border-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) 1; */
+  }
+
+  #viewPort03 {
+    position: absolute;
+    top: 20vh;
+    left: 30vw;
+    margin: auto;
+    /* width: 105mm;
+    height: 196mm; */
   }
 </style>
 
@@ -173,19 +200,25 @@
   </span>
 {/each}
 
+<!-- <div id="viewPort01" bind:this={viewPort01}> -->
 <HAPPY_UpSandyBrown_Center
   {startHAPPY}
   on:finishedHAPPY={() => {
     startBIRTHDAY = true;
   }} />
 <!-- <BIRTHDAY_UpSandyBrown /> -->
+<!-- </div> -->
+<!-- <div id="viewPort02" bind:this={viewPort02}> -->
 <BIRTHDAY_UpSandyBrown
   on:finishedBIRTHDAY={() => {
     showPhoto1 = true;
   }}
   {startBIRTHDAY} />
+<!-- </div> -->
 {#if showPhoto1}
   <img
+    style="border: {portraitBorder}px solid; border-image:
+    radial-gradient(rgb(0, 143, 104), rgb(209, 253, 203)) 1;"
     in:portraitDrop={{ x: 20, y: -5, duration: 1500 }}
     on:introend={() => {
       showPhoto2 = true;
@@ -198,6 +231,8 @@
 {/if}
 {#if showPhoto2}
   <img
+    style="border: {portraitBorder}px solid; border-image: conic-gradient(red,
+    yellow, lime, aqua, blue, magenta, red) 1;"
     in:blur={{ duration: 1500 }}
     on:introend={() => {
       showPhoto3 = true;
@@ -210,10 +245,22 @@
 {/if}
 {#if showPhoto3}
   <img
+    style="border: {portraitBorder}px solid; border-image: conic-gradient(red,
+    yellow, lime, aqua, blue, magenta, red) 1;"
     in:portraitRotateIn={{ duration: 1500 }}
+    on:introend={() => {
+      showPhoto4 = true;
+    }}
     out:blur={{ duration: 1500 }}
     class="portrait"
     id="portrait_03"
     src="./media/kitty-06.jpg"
     alt="" />
+{/if}
+{#if showPhoto4}
+  <div
+    id="viewPort03"
+    style="width: {paintingTargetHeight}px; height: {paintingTargetHeight}px">
+    <Kitty {easing} {speed} {radius} {duration} />
+  </div>
 {/if}

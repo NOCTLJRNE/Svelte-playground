@@ -54,6 +54,10 @@
   //     "'Sriracha', cursive",
   //     "'Tangerine', cursive"
   //   ];
+  const easing = linear;
+  const speed = "0.15";
+  const radius = "20";
+  const duration = "1500";
   let blue = "#0000FF";
   let strokeWidth = 1;
   let visible1 = false;
@@ -154,7 +158,7 @@
 
   <!-- <Ha_Bi_SandyBrown /> -->
   {#if visible4}
-    <Kitty />
+    <Kitty {easing} {speed} {radius} {duration} />
   {/if}
 
 </div>
