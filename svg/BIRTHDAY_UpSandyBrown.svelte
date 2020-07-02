@@ -34,7 +34,7 @@
 <style>
   #svg15148 {
     position: absolute;
-    top: 62vh;
+    top: 65vh;
     left: 10vw;
     z-index: 2;
   }

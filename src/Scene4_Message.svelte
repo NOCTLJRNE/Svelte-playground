@@ -6,6 +6,7 @@
   export let scene4Start = false;
   export let bgm2Delay;
   export let bgm2Ended = false;
+  const introText = "Let's have something more lively !";
   const DANCINGSPEED = 0.2;
   const UNIT = "%";
   const STARTING_POINT = 5;
@@ -40,9 +41,11 @@
   const twistingResizeHeight = twistingHeight * twistingResizeRatio;
 
   let heartsActivated = false;
+  let introTextVisible = false;
   let startDancing = false;
   let scticker01Visible = false;
   let scticker02Visible = false;
+  let lastMessageVisible = false;
   let direction = 1;
   let emoji1XLeft = 3;
   let emoji1XLeftString = "3%";
@@ -57,6 +60,7 @@
   let emoji1ScaleY = 0.6;
   let emoji2ScaleX = -0.6;
   let emoji2ScaleY = 0.6;
+  let message01;
   const X_MAX = 96;
   const X_MIN = 0;
   const Y_MAX = 94;
@@ -68,24 +72,36 @@
     "🥳",
     "🎁",
     "🍀",
-    "🎂",
+    // "🎂",
+    "🥗",
     "💰",
     "🏘️",
     "🚗",
-    "🗼",
+    // "🗼",
     "❤️"
   ];
+  const outroText = "... Hope your life will be filled with";
+  const outroEmojis =
+    emojisSelection.slice(0, emojisSelection.length - 1).join(", ") +
+    " & " +
+    emojisSelection[emojisSelection.length - 1];
+  const outroFullText =
+    outroText +
+    "\n" +
+    emojisSelection.slice(0, emojisSelection.length - 1).join(", ") +
+    " & " +
+    emojisSelection[emojisSelection.length - 1];
   let messagesIndex = 0;
   const messages = [
-    "Party",
-    "Gift",
-    "Luck",
-    "Cake",
-    "Money",
-    "House",
-    "Car",
-    "Travel",
-    "Love"
+    "..Happiness..",
+    "..Lot of Gifts..",
+    "..Luck..",
+    "..Health..",
+    "..$$$..",
+    "..more Wealth..",
+    "..even more Wealth.. :D",
+    // "Travel",
+    "..& Love.."
   ];
   const STICKERCOUNT = 4;
   const stickersName = ["twisting", "spinning"];
@@ -95,7 +111,7 @@
     // let clipping = 29;
     return {
       x: i % 2 ? 120 : -20,
-      y: Math.random() * 60,
+      y: i < 2 ? Math.random() * 30 + 30 * i : Math.random() * 60,
       r: 0.5 + Math.random() * (1 - 0.5),
       // r: (0.2 + Math.random() * (0.5 - 0.2)),
       name: i < 2 ? "twisting" : "spinning", // first half array is twisting
@@ -122,6 +138,9 @@
     })
     .sort((a, b) => a.r - b.r);
   onMount(() => {
+    // console.log("outroFullText: ", outroFullText);
+    // console.log("message01 width: ", message01.width);
+    introTextVisible = true;
     setTimeout(() => {
       dropTheEmojis(); // replace this with the beating effect
       timer1 = setInterval(() => {
@@ -139,6 +158,9 @@
         } else {
           clearInterval(timer1);
         }
+        // for (let i = 0; i < 2; i++) {
+        //   stickerArray[i].d = -stickerArray[i].d;
+        // }
       }, beatPeriod);
       let frame;
       function loop() {
@@ -162,6 +184,7 @@
         stickerArray = stickerArray.map((sticker, i) => {
           sticker.x = sticker.x - sticker.d * 0.4 * sticker.r;
           if (i < 2) {
+            // if the sticker is twisting
             if (sticker.x < 20 && sticker.d == 1) {
               sticker.d = -1;
               // sticker.x = 80 + Math.random() * 20;
@@ -209,7 +232,15 @@
     heartsActivated = true;
     // messagesIndex = emojiIndex;
     // console.log("messagesIndex: ", messagesIndex);
-    emojiIndex = (emojiIndex + 1) % emojisSelection.length;
+    emojiIndex += 1;
+    // emojiIndex = (emojiIndex + 1) %1;
+    if (emojiIndex == emojisSelection.length) {
+      clearInterval(timer1);
+      // display the final message
+      setTimeout(() => {
+        lastMessageVisible = true;
+      }, beatPeriod);
+    }
     setTimeout(() => {
       heartsActivated = false;
       messagesIndex = (messagesIndex + 1) % messages.length;
@@ -259,10 +290,11 @@
   .heartDroplet {
     position: absolute;
     font-size: 5vw;
-    z-index: 2;
+    z-index: 1;
   }
   .motion {
     position: absolute;
+    z-index: 3;
     /* height: 50vh; */
   }
   #flex-container {
@@ -281,6 +313,7 @@
     transform: scale(1);
     position: absolute;
     top: 0%;
+    z-index: 2;
     /* right: auto; */
     /* left: 3%; */
     /* top: 80%;
@@ -290,6 +323,7 @@
     transform: scaleX(-1) scaleY(1);
     position: absolute;
     bottom: 0%;
+    z-index: 2;
     /* left: auto; */
     /* right: 3%; */
     /* top: 80%;
@@ -298,19 +332,72 @@
   /* #spacer {
     width: 500px;
   } */
+  #message1 {
+    padding-top: 20vh;
+    font-family: "Sriracha", serif;
+    font-size: 8vh;
+    color: sandybrown;
+  }
+
   #message2 {
     position: absolute;
     z-index: 4;
     margin-top: 20vh;
     font-family: "Sriracha", serif;
     font-size: 8vh;
-    color: deepskyblue;
+    color: sandybrown;
+  }
+  #message3Wrapper {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    padding-top: 35vh;
+    font-family: "Sriracha", serif;
+    font-size: 8vh;
+    color: sandybrown;
+  }
+  #message3 {
+    position: relative;
+    left: -50%;
+    width: 90vw;
+  }
+  #message4 {
+    position: absolute;
+    z-index: 4;
+    padding-top: 40vh;
+    font-family: "Sriracha", serif;
+    font-size: 8vh;
+    color: sandybrown;
   }
 </style>
 
+{#if introTextVisible}
+  <h3
+    id="message1"
+    bind:this={message01}
+    in:fly={{ duration: 700, x: -100 }}
+    out:fly={{ duration: 700, x: 100 }}
+    on:introend={() => {
+      setInterval(() => {
+        introTextVisible = false;
+      }, 2000);
+    }}>
+    {introText}
+  </h3>
+{/if}
+{#if lastMessageVisible}
+  <div id="message3Wrapper" in:fade={{ duration: 500 }}>
+    <h3 id="message3">
+      {outroText}
+      <br />
+      {outroEmojis}
+    </h3>
+  </div>
+  <!-- <h3 id="message4" in:fade={{ duration: 500 }}>{outroEmojis}</h3> -->
+{/if}
 <div id="flex-container">
   {#if scene4Start}
-    <p>Scene 4</p>
+    <!-- <p>Scene 4</p> -->
   {/if}
   {#if heartsActivated}
     {#each emojisArray as heart, i}
@@ -324,6 +411,7 @@
 
       <!-- note: the transiton total duration must exactly match the timer, otherwise emoji scale will be reverted-->
     {/each}
+
     <h3 id="message2" in:fade={{ duration: 500 }} out:fade={{ duration: 500 }}>
       {messages[messagesIndex]}
     </h3>

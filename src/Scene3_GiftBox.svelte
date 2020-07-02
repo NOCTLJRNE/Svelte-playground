@@ -6,8 +6,12 @@
   //resize emojis based on screen resolution
   const happyHeight = 431;
   const happyWidth = 468;
-  const happyRatioToScreenHeight = 0.4;
-  const happyTargetHeight = happyRatioToScreenHeight * screen.height;
+  const happyRatioToScreenHeight = 0.45;
+  const refHeight = window.innerHeight;
+  const refWidth = window.innerWidth;
+  // const refHeight = screen.height;
+  // const refWidth = screen.width;
+  const happyTargetHeight = happyRatioToScreenHeight * refHeight;
   const happyResizeRatio =
     Math.round((happyTargetHeight * 100) / happyHeight) / 100;
   const happyResizeWidth = happyWidth * happyResizeRatio;
@@ -16,8 +20,8 @@
   //doing same thing for gift box*
   const giftHeight = 512;
   const giftWidth = 512;
-  const giftRatioToScreenHeight = 0.75;
-  const giftTargetHeight = giftRatioToScreenHeight * screen.height;
+  const giftRatioToScreenHeight = 0.8;
+  const giftTargetHeight = giftRatioToScreenHeight * refHeight;
   const giftResizeRatio =
     Math.round((giftTargetHeight * 100) / giftHeight) / 100;
   const giftResizeWidth = giftWidth * giftResizeRatio;

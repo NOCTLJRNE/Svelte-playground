@@ -5,13 +5,17 @@
   // export let scene2Start = false;
   const hummingWidth = 291;
   const hummingHeight = 285;
-  const hummingRatioToScreenHeight = 0.25;
-  const hummingTargetHeight = hummingRatioToScreenHeight * screen.height;
+  const hummingRatioToScreenHeight = 0.35;
+  const refHeight = window.innerHeight;
+  const refWidth = window.innerWidth;
+  // const refHeight = screen.height;
+  // const refWidth = screen.width;
+  const hummingTargetHeight = hummingRatioToScreenHeight * refHeight;
   const hummingResizeRatio =
     Math.round((hummingTargetHeight * 100) / hummingHeight) / 100;
   const hummingResizeWidth = hummingWidth * hummingResizeRatio;
   const hummingResizeHeight = hummingHeight * hummingResizeRatio;
-  const blinkingGlowBlurRadius = 0.09 * screen.width;
+  const blinkingGlowBlurRadius = 0.09 * refWidth;
   let scene2Start = false;
   onMount(() => {
     scene2Start = true;

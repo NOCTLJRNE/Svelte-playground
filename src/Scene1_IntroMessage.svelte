@@ -7,9 +7,9 @@
   //   const message1 = "Tặng chef nhân dịp sinh nhật";
   const message1 = "Tặng chef !";
   //   const message2 = "lần thứ 3";
-  const message2 = "X sinh nhật lần thứ 3";
+  const message2 = "✖️ sinh nhật lần 25";
   //   const message3 = "lần thứ 3 ...";
-  const message3 = "X sinh nhật lần thứ 3 ...!";
+  const message3 = "✖️ sinh nhật lần 25 +++++!";
   const message4 = "Enjoy !";
   const message5 = "... Or not ...";
   let visible1 = false;
@@ -89,7 +89,8 @@
 
 <style>
   #message1 {
-    margin-top: 20vh;
+    /* margin-top: 20vh; */
+    padding-top: 20vh;
     font-family: "Sriracha", serif;
     font-size: 8vh;
     color: sandybrown;
@@ -119,8 +120,8 @@
       </span>
     {/if}
     {#if visible2}
-      <span in:typing={{ speed: 800, delay: 100 }} on:introend={intro2End}>
-        ...
+      <span in:typing={{ speed: 1000, delay: 100 }} on:introend={intro2End}>
+        +++++
       </span>
     {/if}
     {#if visible3}
@@ -133,7 +134,7 @@
       </span>
     {/if}
     {#if visible4}
-      <span in:typing={{ speed: 80, delay: 500 }}>😛</span>
+      <span in:typing={{ speed: 80, delay: 500 }}>😆</span>
       <br />
       <span
         in:typing={{ speed: 80, delay: 500 }}

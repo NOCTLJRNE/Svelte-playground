@@ -25,7 +25,7 @@
   let bgm2Ended = false;
   let bgm1;
   let bgm2;
-  const bgm2Delay = 2000;
+  const bgm2Delay = 3000;
   onMount(() => {
     // bgm1.volume = 0.7;
     bgm1.volume = 0.2;
@@ -34,7 +34,9 @@
   function bgm1Ended() {
     // console.log("Song ended !");
     // scene3Start = false;
-    scene3Ended = true;
+    setTimeout(() => {
+      scene3Ended = true;
+    }, 3000);
   }
   // function bgm2Ended() {}
   function startScene2() {
@@ -71,9 +73,9 @@
 </style>
 
 <div id="topContainer">
-  <h1>
+  <!-- <h1>
     <a href="/" use:link>Back to 🏠🏠🏠</a>
-  </h1>
+  </h1> -->
   <audio
     bind:this={bgm1}
     autoplay
@@ -86,7 +88,7 @@
       setTimeout(() => {
         scene4Visible = false;
         scene5Visible = true;
-      }, 1000);
+      }, 5000);
     }}
     src="./media/bgm/Drop That Booty Down Low drop.mp3" />
   <!-- <button on:click={() => (visible2 = false)}>visible2</button> -->

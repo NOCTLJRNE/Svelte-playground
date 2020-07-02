@@ -28,7 +28,7 @@
 <style>
   #svg11124 {
     position: absolute;
-    top: -5vh;
+    top: -8vh;
     left: -15vw;
     z-index: 2;
   }

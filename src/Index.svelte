@@ -36,6 +36,6 @@
     <br />
     <a href="/scene5" use:link>🎞️ Scene 5! 🎞️!</a>
     <br />
-    <a href="/birthday" use:link>🎂🎁🍰🎉</a>
+    <a href="/birthday" use:link>➡️🎂🎁🍰🎉⬅️</a>
   </h2>
 </div>
