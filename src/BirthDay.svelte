@@ -9,7 +9,7 @@
   import { blur, draw, fade, fly } from "svelte/transition";
 
   let visible1 = false;
-  let scene1Visible = true;
+  let scene1Visible = false;
   let scene2Visible = false;
   let scene2Start = false;
   let scene3Visible = false;
@@ -28,6 +28,7 @@
   const bgm2Delay = 3000;
   onMount(() => {
     // bgm1.volume = 0.7;
+    scene1Visible = true;
     bgm1.volume = 0.2;
     bgm2.volume = 0.2;
   });
