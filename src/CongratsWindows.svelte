@@ -12,6 +12,9 @@
   }
 </style>
 
+<svelte:head>
+  <meta property="og:image" content="/media/snowy.jpg" />
+</svelte:head>
 <h2>Congratulations</h2>
 <button on:click={getBack}>Ok I'm done !</button>
 <br />
