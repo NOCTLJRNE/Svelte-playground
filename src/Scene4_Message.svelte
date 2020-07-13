@@ -98,8 +98,8 @@
     "..Luck..",
     "..Health..",
     "..$$$..",
-    "..more Wealth..",
-    "..even more Wealth.. :D",
+    "..more Fortune..",
+    "..even more Fortune.. :D",
     // "Travel",
     "..& Love.."
   ];
