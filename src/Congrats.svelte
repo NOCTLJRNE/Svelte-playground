@@ -25,21 +25,21 @@
   let heartsActivated = false;
   let showPhotos = false;
   let _heartBeatIntroEnded = false;
-  let characters = [
-    "🥳",
-    "🙃",
-    "🎉",
-    "🌞",
-    "✨",
-    "🎂",
-    "🎁",
-    "🍀",
-    "❤️",
-    "💰",
-    "💩",
-    "❄️"
-  ];
-  // let characters = ["❄️"];
+  // let characters = [
+  //   "🥳",
+  //   "🙃",
+  //   "🎉",
+  //   "🌞",
+  //   "✨",
+  //   "🎂",
+  //   "🎁",
+  //   "🍀",
+  //   "❤️",
+  //   "💰",
+  //   "💩",
+  //   "❄️"
+  // ];
+  let characters = ["🍮", "🍮", "🍮", "🍮"];
   let sound01;
   let soundVol1 = 5;
   // let confetti = new Array(100)
